@@ -1,0 +1,6 @@
+{
+    "require": {
+        "doctrine/orm": "^2.7",
+        "firebase/php-jwt": "^5.0"
+    }
+}

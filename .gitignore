@@ -1,0 +1,9 @@
+vendor/
+**/.sass-cache/
+**/.DS_Store/
+**/node_modules/
+**/logs
+**/logs/
+**/log
+**/log/
+**/*.log
