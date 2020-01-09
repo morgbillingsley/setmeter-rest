@@ -5,6 +5,7 @@ namespace Models;
 use Doctrine\ORM\Mapping as ORM;
 use \Firebase\JWT\JWT;
 use Core\Services\Validator;
+use DateTime;
 
 /**
  * @ORM\Entity
@@ -45,12 +46,18 @@ class User
     private $phone;
 
     /**
+     * @ORM]Column(type="datetime", name="signed_up")
+     */
+    private $signedUp;
+
+    /**
      * @ORM\Column(type="simple_array", name="roles", nullable=true)
      */
     private $roles;
 
     public function __construct()
     {
+        $this->signedUp = new DateTime();
         $this->roles = [];
     }
 
@@ -152,6 +159,20 @@ class User
             } else {
                 throw new \Exception("The phone number is invalid. It must follow the format xxx-xxx-xxxx");
             }
+        }
+
+        return $this;
+    }
+
+    public function getSignedUp(): ?DateTime
+    {
+        return $this->signedUp;
+    }
+
+    public function setSignedUp(DateTime $signedUp): self
+    {
+        if ($this->signedUp !== $signedUp) {
+            $this->signedUp = $signedUp;
         }
 
         return $this;
